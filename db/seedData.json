@@ -1,0 +1,58 @@
+{
+	"users": {
+		"user0": {
+			"firstName": "Gib",
+			"lastName": "Bowden",
+			"imageUrl": "images/whatever",
+			"uid": "Opiy3dYDrEMlyetIjEmmcOmL0Nk2"
+		},
+		"user1": {
+			"firstName": "John",
+			"lastName": "Doe",
+			"imageUrl": null,
+			"uid": "Opiy3dYDrEMlyetIjEmmcOmL0Nk2"
+		}
+	},
+	"pins": {
+		"pid0": {
+			"name": "awesome airplane",
+			"description": "this is a picture of an awesome airplane",
+			"sourceLink": "http://whatever.com",
+			"imageLink": "http://whatever.com"
+		},
+		"pid1": {
+			"name": "awesome train",
+			"description": "this is a picture of an awesome train",
+			"sourceLink": "http://whatever.com",
+			"imageLink": "http://whatever.com"
+		}
+	},
+	"boards": {
+		"bid0": {
+			"name": "Planes"
+		},
+		"bid1": {
+			"name": "Trains"
+		}
+	},
+	"userBoard": {
+		"ubid0": {
+			"uid": "Opiy3dYDrEMlyetIjEmmcOmL0Nk2",
+			"bid": "bid0"
+		},
+		"ubid1": {
+			"uid": "Opiy3dYDrEMlyetIjEmmcOmL0Nk2",
+			"bid": "bid1"
+		}
+	},
+	"pinBoard": {
+		"pbid0": {
+			"pid": "pid0",
+			"bid": "bid1"
+		},
+		"pbid1": {
+			"pid": "pid0",
+			"bid": "bid0"
+		}
+	}
+}
