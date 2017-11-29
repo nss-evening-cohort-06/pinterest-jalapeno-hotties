@@ -2,4 +2,4 @@
 
 "use strict";
 
-const app = angular.module("Pinterest-Jalapeno-Hotties", ["ngAnimate", "ngRoute", "ngSanitize"]);
+const app = angular.module("Pinterest-Jalapeno-Hotties", ["ngAnimate", "ngRoute", "ngSanitize", "ui.bootstrap"]);

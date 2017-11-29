@@ -14,7 +14,7 @@ app.controller("ModalCtrl", ['$rootScope', '$scope', '$uibModal',
 
             modalInstance.result.then(function () {
             }, function () {
-                $scope.$emit('updateContacts');
+                $scope.$emit('updatePins');
             });
         };
 
