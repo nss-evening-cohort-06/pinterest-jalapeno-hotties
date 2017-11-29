@@ -15,16 +15,16 @@
 	},
 	"pins": {
 		"pid0": {
-			"name": "awesome airplane",
-			"description": "this is a picture of an awesome airplane",
-			"sourceLink": "http://whatever.com",
-			"imageLink": "http://whatever.com"
+			"name": "Cat Charger",
+			"description": "Just another stupid cat picture..",
+			"sourceLink": "http://www.dumpaday.com/funny-animals/funny-animal-picture-dump-day-22-pics-3/",
+			"imageLink": "https://i.pinimg.com/564x/b4/b7/56/b4b756ca7a60b4924513fffc98a61b8e.jpg"
 		},
 		"pid1": {
-			"name": "awesome train",
-			"description": "this is a picture of an awesome train",
-			"sourceLink": "http://whatever.com",
-			"imageLink": "http://whatever.com"
+			"name": "Cat Fish",
+			"description": "Yup, it's a stupid cat picture..",
+			"sourceLink": "https://www.catsincare.com/sphynx-cats-scamsters-shaved-kittens/",
+			"imageLink": "https://i.pinimg.com/564x/52/c3/b0/52c3b083077f652ab0ee3af04b6269e3.jpg"
 		}
 	},
 	"boards": {

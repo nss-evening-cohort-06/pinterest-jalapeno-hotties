@@ -44,7 +44,13 @@ app.config(function($routeProvider){
       controller: 'AuthCtrl'
     } )
 
-    .when("/contacts/detail/:id", {
+    .when("/home", {
+      templateUrl: 'partials/home.html',
+      controller: 'HomeCtrl',
+      resolve: { isAuth }
+    } )
+
+    .when("/detail/:id", {
       templateUrl: 'partials/detail.html',
       controller: 'DetailContact',
       resolve: { isAuth }
