@@ -32,7 +32,7 @@ app.run(function($location, $rootScope, FIREBASE_CONFIG, AuthService){
     //if not on /auth page AND not logged in redirect to /auth
     if (!appTo && !logged) {
       event.preventDefault();
-      $location.path('/Auth');
+      $location.path('/auth');
     }
   });
 });
