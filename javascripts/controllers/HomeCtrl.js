@@ -17,4 +17,13 @@ app.controller("HomeCtrl", function ($location, $routeParams, $scope, PinService
         getPins();
     });
 
+    const getBoardsById = (uid) => {
+        PinService.getBoardByUid().then((results) => {
+            $scope.boards = results;
+        }).catch((error) => {
+            console.log("error in getBoardsById in HomeCtrl", error);
+        });
+
+    };
+
 });

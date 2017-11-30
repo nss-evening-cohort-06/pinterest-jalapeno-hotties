@@ -20,7 +20,8 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
     };
 
     const addNewPin = (pin) => {
-        return $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin))};
+        return $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin));
+    };
 
     const getBoardByUid = (userUid) => {
       let userBoards = [];
@@ -45,6 +46,7 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
           Object.keys(fbBoards).forEach((key) => {
               fbBoards[key].id = key;
               userBoardWithNames.push(fbBoards[key]);
+              console.log("userBoardWithNames", userBoardWithNames);
           });
             resolve(userBoardWithNames);
           }).catch((error)=>{
