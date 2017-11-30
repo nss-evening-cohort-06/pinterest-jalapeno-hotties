@@ -26,7 +26,8 @@
                     <ul class="dropdown-menu" ng-repeat="board in boards">
                         <li><a href="#">{{board.name}}</a></li>
                     </ul>
-                    </li>
+										</li>
+										<li><a ng-controller="ModalCtrl" ng-click="launchModal('partials/newPin.html','NewPinCtrl')">Add New Pin</a></li>
                     <li><a ng-click="logoutUser()">Logout</a></li>
               </ul>
 	        </div> 
