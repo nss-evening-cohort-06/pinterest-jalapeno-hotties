@@ -14,5 +14,4 @@ app.controller("HomeCtrl", function ($location, $routeParams, $scope, PinService
 
     getPins();
 
-
 });
