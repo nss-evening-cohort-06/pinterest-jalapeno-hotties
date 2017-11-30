@@ -6,4 +6,5 @@ app.controller("NavCtrl", function ($rootScope) {
         text: ""
     };
 
+
 });
