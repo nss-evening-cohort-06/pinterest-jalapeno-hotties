@@ -22,11 +22,12 @@
 							
 							<ul class="nav navbar-nav" ng-show="uid">
                     <li class="dropdown">
-                    <a href="#" ng-click="getBoards(uid)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boards <span class="caret"></span></a>
+                    <a ng-click="getBoards(uid)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boards <span class="caret"></span></a>
                     <ul class="dropdown-menu" ng-repeat="board in boards">
                         <li><a href="#">{{board.name}}</a></li>
                     </ul>
-                    </li>
+										</li>
+										<li><a ng-controller="ModalCtrl" ng-click="launchModal('partials/newPin.html','NewPinCtrl')">Add New Pin</a></li>
                     <li><a ng-click="logoutUser()">Logout</a></li>
               </ul>
 	        </div> 

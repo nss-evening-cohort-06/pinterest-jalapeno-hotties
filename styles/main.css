@@ -1,5 +1,19 @@
-#inputText {
+.navbar #inputText {
   margin-top: 16px; }
 
-.little-bit-of-top-margin {
+.navbar .little-bit-of-top-margin {
   margin-top: 9px; }
+
+.navbar li a {
+  cursor: pointer; }
+
+.modal-content .alert {
+  width: 95%;
+  margin: auto; }
+
+.modal-content .modal-footer {
+  border-top: none; }
+  .modal-content .modal-footer .btn {
+    float: right;
+    margin-left: 0;
+    margin-right: 15px; }

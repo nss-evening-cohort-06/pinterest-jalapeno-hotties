@@ -1,0 +1,17 @@
+.modal-content {
+
+    .alert {
+        width: 95%; 
+        margin: auto; 
+    }
+
+    .modal-footer {
+        border-top: none; 
+    
+        .btn {
+            float: right; 
+            margin-left: 0;
+            margin-right: 15px; 
+        }
+    }
+}
