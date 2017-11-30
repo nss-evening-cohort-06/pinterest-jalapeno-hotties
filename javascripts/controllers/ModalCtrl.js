@@ -15,7 +15,6 @@ app.controller("ModalCtrl", ['$rootScope', '$scope', '$uibModal',
             modalInstance.result.then(function () {
             }, function () {
                 $rootScope.$broadcast("updatePins");
-                console.log("event happened"); 
             });
         };
 
