@@ -3,6 +3,8 @@
 app.controller("HomeCtrl", function ($location, $routeParams, $scope, PinService) {
     $scope.pin = {};
 
+    
+
     const getPins = () => {
         PinService.getAllPins().then((results) => {
             $scope.pins = results;
@@ -15,6 +17,8 @@ app.controller("HomeCtrl", function ($location, $routeParams, $scope, PinService
 
     $scope.$on("updatePins", function(){
         getPins();
+        $scope.isSuccess = true;
+        PinService.alertTimeout(3); 
     });
 
 });

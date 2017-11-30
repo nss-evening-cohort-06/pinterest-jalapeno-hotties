@@ -6,17 +6,17 @@ app.controller("NewPinCtrl", function ($scope, PinService) {
         if ($scope.newPinForm.$valid){
             PinService.addNewPin($scope.pin).then(() => {
                 $scope.pin = {};
-                $scope.isSuccess = true;
-                $scope.$dismiss("closed");
+                $scope.$dismiss("pin added");
             }).catch((error) => {
                 console.log("error in submitForm", error);
                 $scope.isSuccess = false;
+                PinService.alertTimeout(3);
             });
         }
     };
 
     $scope.cancel = () => {
-        $scope.$dismiss("cancel");
+        $scope.$dismiss("canceled");
     };
 
 });

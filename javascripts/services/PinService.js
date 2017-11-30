@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
+app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CONFIG) {
 
     const getAllPins = () => {
         let pins = [];
@@ -20,9 +20,24 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
     };
 
     const addNewPin = (pin) => {
-        return $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin));
+        return $q((resolve, reject) => {
+            $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin)).then((result) => {
+                resolve(result);  
+            }).catch((err) => {
+                reject(err);  
+            });
+        });
+    };
+
+    const alertTimeout = (timeoutInSeconds) => {
+        return $q((resolve, reject) => {
+            $timeout(() => {
+                $('.alert').alert('close');
+                resolve(); 
+            }, timeoutInSeconds * 1000);  
+        });    
     };
 
 
-    return {getAllPins, addNewPin};
+    return {getAllPins, addNewPin, alertTimeout};
 });
