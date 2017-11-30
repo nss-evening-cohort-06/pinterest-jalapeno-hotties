@@ -50,7 +50,7 @@ app.config(function($routeProvider){
       resolve: { isAuth }
     } )
 
-    .when("/board/:id", {
+    .when("/board/:name", {
       templateUrl: 'partials/board.html',
       controller: 'BoardCtrl',
       resolve: { isAuth }
