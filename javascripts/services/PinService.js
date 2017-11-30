@@ -19,6 +19,9 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
         });
     };
 
+    const addNewPin = (pin) => {
+        return $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin))};
+
     const getBoardByUid = (userUid) => {
       let userBoards = [];
       return $q((resolve,reject) => {
@@ -72,5 +75,5 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
   };
 
 
-    return {getAllPins, getCurrentUserBoards, getBoardByUid};
+    return {getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid};
 });

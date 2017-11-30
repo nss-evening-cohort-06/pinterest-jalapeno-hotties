@@ -13,4 +13,8 @@ app.controller("HomeCtrl", function ($location, $routeParams, $scope, PinService
 
     getPins();
 
+    $scope.$on("updatePins", function(){
+        getPins();
+    });
+
 });
