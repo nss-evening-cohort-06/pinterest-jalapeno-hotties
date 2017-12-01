@@ -13,4 +13,5 @@ app.controller("NavCtrl", function ($location, $rootScope, $scope, $window, Auth
         $location.path('/auth'); 
     };
 
+
 });
