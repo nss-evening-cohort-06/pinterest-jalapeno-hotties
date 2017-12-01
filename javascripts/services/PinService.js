@@ -46,7 +46,6 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
           Object.keys(fbBoards).forEach((key) => {
               fbBoards[key].id = key;
               userBoardWithNames.push(fbBoards[key]);
-              console.log("userBoardWithNames", userBoardWithNames);
           });
             resolve(userBoardWithNames);
           }).catch((error)=>{
@@ -76,6 +75,19 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  const addNewBoard = (board) => {
+    console.log("board", board);
+    return $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify(board));
+  };
 
-    return {getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid};
+  const addNewUserBoard = (userBoard) => {
+    return $http.post(`${FIREBASE_CONFIG.databaseURL}/userBoard.json`, JSON.stringify(userBoard));
+  };
+
+  const addNewPinBoard = (pinBoard) => {
+    return $http.post(`${FIREBASE_CONFIG.databaseURL}/pinBoard.json`, JSON.stringify(pinBoard));
+    
+  };
+
+    return {getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard};
 });

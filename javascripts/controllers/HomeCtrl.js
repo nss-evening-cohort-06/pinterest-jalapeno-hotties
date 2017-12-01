@@ -17,19 +17,4 @@ app.controller("HomeCtrl", function ($location, $rootScope, $routeParams, $scope
         getPins();
     });
 
-    // const lauchModal = (partial/pinDetail.html, PinDetailCtrl) => {
-
-    // };
-
-    const getBoardsById = () => {
-        PinService.getBoardByUid($rootScope.uid).then((results) => {
-            $scope.boards = results;
-        }).catch((error) => {
-            console.log("error in getBoardsById in HomeCtrl", error);
-        });
-
-    };
-
-    getBoardsById();
-
 });

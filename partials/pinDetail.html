@@ -1,28 +1,32 @@
 <div ng-controller="PinDetailCtrl" id="pin-detail" class="text-center">
-        <div class="modal-header">
-            <h3 class="modal-title text-capitalize">{{pin.name}}</h3>
-        </div>
-    
-        <div class="modal-body row">
-            <div>
-                <img ng-src={{pin.imageLink}} alt="Image of Pin Coming Soon!">
-                <a href="{{pin.sourceLink}}">{{pin.sourceLink}}</a>
-                <p>{{pin.description}}</p>
-
-                <div class="btn-group">
-                    
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-pushpin"></span>
-                        Pin this to a board, Sucka
-                        
-                    </button>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li class="dropdown-item" ng-repeat="board in boards">{{board.name}}}</li>
-                        </ul>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Create New Board</a>
-                    </div>
-                </div>
-
+    <div class="modal-header">
+        <h3 class="modal-title text-capitalize">{{pin.name}}</h3>
     </div>
+    
+    <div class="modal-body row">
+        <img ng-src={{pin.imageLink}} alt="Image of Pin Coming Soon!">
+        <a href="{{pin.sourceLink}}">{{pin.sourceLink}}</a>
+        <p>{{pin.description}}</p>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-pushpin"></span>
+                Pin this to a board, Sucka
+            </button>
+                
+            <div class="dropdown-menu">
+                <ul>
+                    <li class="dropdown-item" ng-repeat="board in boards">{{board.name}}</li>
+                </ul>
+                <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" ng-click="inputModeTrue()" >Create New Board</a>
+            </div>
+
+            <div ng-show="input">
+                <input type="text"  ng-model="boardName"><button class="btn btn-default" ng-click="createBoardWithPin()">Save</button>
+            </div>
+                
+        </div>
+    </div>
+    
+</div>
