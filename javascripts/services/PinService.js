@@ -76,7 +76,6 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
   };
 
   const addNewBoard = (board) => {
-    console.log("board", board);
     return $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify(board));
   };
 

@@ -19,8 +19,6 @@ app.controller("PinDetailCtrl", function ($rootScope, $scope, PinService) {
     };
 
     $scope.createBoardWithPin = () => {
-
-        console.log('$scope.boardName', $scope.boardName);
         const newBoard = {
             name: $scope.boardName
         };
@@ -29,46 +27,28 @@ app.controller("PinDetailCtrl", function ($rootScope, $scope, PinService) {
                 uid: $rootScope.uid,
                 bid: result.data.name
             };
-            PinService.addNewUserBoard(newUserBoard).then((result) => {
+            PinService.addNewUserBoard(newUserBoard).then((userBoardResult) => {
+                $scope.addPinToBoard($scope.pin.id, result.data.name);
             }).catch((err) => {
                 console.log('error in addNewUserBoard in PinDetailCtrl');
             });
-            addPinToBoard($rootScope.pin).then((result) => {
-                console.log('result', result);
-            }).catch((err) => {
-            console.log('error in addPinToBoard in PinDetailCtrl');
-            });
+
         }).catch((err) => {
             console.log('error in createBoardWithPin in PinDetailCtrl');
         });
     };
 
-    const addPinToBoard = () =>{
-        console.log('inside addPinToBoard');
-        $scope.pin = (pin) => {
-        console.log('inside $scope.pin addPinToBoard');
-        
-            PinService.addNewPin($scope.pin).then((result) => {
-                const newPin = {
-                    description: result.data.description,
-                    imageLink: result.data.imageLink,
-                    name: result.data.name,
-                    sourceLink: result.data.sourceLink
-                };
-            }).catch((err) => {
-                console.log('error in addNewPin in PinDetailCtrl');
-            });
-            
-            PinService.addNewPinBoard($scope.pinBoard).then((result) => {
+        $scope.addPinToBoard = (pid, bid) => {
                 const newPinBoard = {
-                    bid: $rootScope.bid,
-                    pid: result.data.name
+                    bid: bid,
+                    pid: pid
                 };
-            }).catch((err) => {
-                console.log('error in addNewPinBoard in PinDetailCtrl');
-            });
+                PinService.addNewPinBoard(newPinBoard).then((result) => {
+                    $scope.cancel();
+                }).catch((err) => {
+                    console.log('error in addNewPinBoard in PinDetailCtrl');
+                });
         };
-    };
 
     $scope.cancel = () => {
         $scope.$dismiss("cancel");
