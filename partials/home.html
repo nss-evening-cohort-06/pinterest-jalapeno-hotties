@@ -2,7 +2,7 @@
 <div class="home" id="home">
     <div class="row">
 
-        <div class="col-sm-6 col-md-4" ng-repeat="pin in pins">
+        <div class="col-sm-6 col-md-4" ng-repeat="pin in pins | filter: searchTextNav.text">
             <div class="thumbnail">
                 <button type="button" class="btn btn-default pin btn-danger" aria-label="Left Align" ng-controller="ModalCtrl" ng-click="lauchModal('partial/detail.html', 'DetailCtrl')">
                     <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
