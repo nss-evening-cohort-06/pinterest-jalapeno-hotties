@@ -4,7 +4,7 @@
     </div>
     
     <div class="modal-body row">
-        <img ng-src={{pin.imageLink}} alt="Image of Pin Coming Soon!">
+        <img class="detailImage" ng-src={{pin.imageLink}} alt="Image of Pin Coming Soon!">
         <a href="{{pin.sourceLink}}">{{pin.sourceLink}}</a>
         <p>{{pin.description}}</p>
 
@@ -15,11 +15,9 @@
             </button>
                 
             <div class="dropdown-menu">
-                <ul>
-                    <li class="dropdown-item" ng-repeat="board in boards" ng-click="addPinToBoard(pin.id, board.id)">{{board.name}}</li>
-                </ul>
+                    <a class="dropdown-item" ng-repeat="board in boards" ng-click="addPinToBoard(pin.id, board.id)">{{board.name}}</a>
                 <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" ng-click="inputModeTrue()" >Create New Board</a>
+                    <a class="dropdown-item text-center createNewBoardLink" ng-click="inputModeTrue()" >Create New Board</a>
             </div>
 
             <div ng-show="input">
