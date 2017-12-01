@@ -2,7 +2,7 @@
 <div id="home">
     <div class="row">
 
-        <div class="col-sm-6 col-md-4" ng-repeat="pin in pins">
+        <div class="col-sm-6 col-md-4" ng-repeat="pin in pins | filter: searchTextNav.text">
             <div class="thumbnail">
                 <img ng-src={{pin.imageLink}} alt="Image of Pin Coming Soon!">
                 <div class="caption">
