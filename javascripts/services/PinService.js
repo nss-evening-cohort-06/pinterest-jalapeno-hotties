@@ -92,5 +92,5 @@ app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CON
   };
 
 
-    return {getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid};
+    return {alertTimeout, getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid};
 });
