@@ -107,6 +107,33 @@ app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CON
   };
 
 
-    return {alertTimeout, getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard};
+  const getPinsByBoardId = (bid) => {
+    let pinBoards = []; 
+    let returnedPins = [];
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/pinBoard.json?orderBy="bid"&equalTo="${bid}"`).then((fbPinBoards) => {
+        Object.keys(fbPinBoards.data).forEach((key) => {
+          pinBoards.push(fbPinBoards.data[key]);
+        });
+        return getAllPins();   
+      }).then((allPins) => {
+        allPins.forEach((pin) => {
+          pinBoards.forEach((pinBoard) => {
+            if (pin.id === pinBoard.pid) {
+              returnedPins.push(pin); 
+            }
+          });
+        });
+        let uniqueReturnedPins = [...new Set(returnedPins)];
+        resolve(uniqueReturnedPins); 
+      }).catch((err) => {
+        console.log(err); 
+      });
+    });
+  };
+
+
+
+    return {alertTimeout, getAllPins, getPinsByBoardId, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard};
  
 });

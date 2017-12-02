@@ -15,7 +15,7 @@
 	    	<div class="form-group col-md-6">
 	          <input ng-show="uid" type="text" id="inputText" class="form-control" placeholder="Search for Pins" ng-model="searchTextNav.text">
 	        </div>
-		      <div class="navbar-form navbar-left">
+		      <div class="navbar-form navbar-right">
 		          <ul class="nav navbar-nav" ng-show="!uid">
                     <li><a ng-href="#!/auth">Login</a></li>
 							</ul>
@@ -24,7 +24,7 @@
                     <li class="dropdown">
                     	<a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-controller="BoardCtrl" ng-click="getBoards()">Boards <span class="caret"></span></a>
                     	<ul class="dropdown-menu">
-                        <li ng-repeat="board in boards"><a href="#!/board/{{board.name}}">{{board.name}}</a></li>
+                        <li ng-repeat="board in boards"><a ng-href="#!/userBoard/{{board.id}}">{{board.name}}</a></li>
                     	</ul>
                     </li>
 										<li><a ng-controller="ModalCtrl" ng-click="launchModal('partials/newPin.html','NewPinCtrl')">Add New Pin</a></li>
