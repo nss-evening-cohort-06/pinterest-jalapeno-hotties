@@ -1,10 +1,10 @@
     
-<div id="home">
+<div id="home" class="home">
 
 <div class="container">
     <div class="row">
         <div class="item" ng-repeat="pin in pins | filter: searchTextNav.text">
-            <div class="well">
+            <div class="well relative-position-for-pin">
                 <button type="button" class="btn btn-default pin btn-danger" aria-label="Left Align" ng-click="launchModal('partials/pinDetail.html','PinDetailCtrl')"
                     ng-controller="ModalCtrl">
                     <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>

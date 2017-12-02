@@ -18,9 +18,9 @@
     margin-left: 0;
     margin-right: 15px; }
 
-.home .well {
+.home .relative-position-for-pin {
   position: relative; }
-  .home .well .pin {
+  .home .relative-position-for-pin .pin {
     position: absolute;
     right: 15px;
     top: 15px; }
