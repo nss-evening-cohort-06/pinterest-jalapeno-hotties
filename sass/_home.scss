@@ -1,0 +1,13 @@
+.home {
+
+    .relative-position-for-pin{
+        position: relative;
+
+        .pin{
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+    }
+
+}
