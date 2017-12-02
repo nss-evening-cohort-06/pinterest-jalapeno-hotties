@@ -20,7 +20,8 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
     };
 
     const addNewPin = (pin) => {
-        return $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin))};
+        return $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin));
+    };
 
     const getBoardByUid = (userUid) => {
       let userBoards = [];
@@ -74,6 +75,18 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  const addNewBoard = (board) => {
+    return $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify(board));
+  };
 
-    return {getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid};
+  const addNewUserBoard = (userBoard) => {
+    return $http.post(`${FIREBASE_CONFIG.databaseURL}/userBoard.json`, JSON.stringify(userBoard));
+  };
+
+  const addNewPinBoard = (pinBoard) => {
+    return $http.post(`${FIREBASE_CONFIG.databaseURL}/pinBoard.json`, JSON.stringify(pinBoard));
+    
+  };
+
+    return {getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard};
 });
