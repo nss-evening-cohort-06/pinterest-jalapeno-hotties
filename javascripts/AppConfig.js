@@ -50,10 +50,10 @@ app.config(function($routeProvider){
       resolve: { isAuth }
     } )
 
-    .when("/board/:name", {
-      templateUrl: 'partials/board.html',
-      controller: 'BoardCtrl',
+    .when("/userBoard/:id", {
+      templateUrl: 'partials/userBoard.html',
+      controller: 'UserBoardCtrl',
       resolve: { isAuth }
     } )
-    .otherwise('/auth');
+    .otherwise('/home');
 });
