@@ -15,6 +15,10 @@ app.controller("UserBoardCtrl", function ($location, $rootScope, $routeParams, $
 
     getBoardPins($routeParams.id);
 
+    PinService.getBoardByBid($routeParams.id).then((board) => {
+        $scope.boardName = board.name; 
+    }); 
+
     $scope.$on("updatePins", function(){
         getBoardPins($routeParams.id);
         $scope.isSuccess = true;
