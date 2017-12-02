@@ -1,6 +1,6 @@
 "use strict"; 
 
-app.controller("HomeCtrl", function ($location, $routeParams, $scope, PinService) {
+app.controller("HomeCtrl", function ($location, $rootScope, $routeParams, $scope, PinService) {
     $scope.pin = {};
 
     
