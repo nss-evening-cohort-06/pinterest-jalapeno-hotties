@@ -113,6 +113,7 @@ app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CON
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/pinBoard.json?orderBy="bid"&equalTo="${bid}"`).then((fbPinBoards) => {
         Object.keys(fbPinBoards.data).forEach((key) => {
+          fbPinBoards.data[key].id = key;
           pinBoards.push(fbPinBoards.data[key]);
         });
         return getAllPins();   
@@ -120,6 +121,7 @@ app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CON
         allPins.forEach((pin) => {
           pinBoards.forEach((pinBoard) => {
             if (pin.id === pinBoard.pid) {
+              pin.pbid = pinBoard.id; 
               returnedPins.push(pin); 
             }
           });
@@ -132,8 +134,12 @@ app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CON
     });
   };
 
+  const deletePinBoardRecord = (pinBoardId) => {
+    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/pinBoard/${pinBoardId}.json`);
+  };
 
 
-    return {alertTimeout, getAllPins, getPinsByBoardId, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard};
+
+    return {alertTimeout, getAllPins, getPinsByBoardId, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard, deletePinBoardRecord};
  
 });

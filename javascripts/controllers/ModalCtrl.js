@@ -15,7 +15,7 @@ app.controller("ModalCtrl", ['$rootScope', '$scope', '$uibModal',
             modalInstance.result.then(function (result) {
                 
             }, function (result) {
-                if (result === "pin added") {
+                if (result === "pin added" || "pin removed") {
                     $rootScope.$broadcast("updatePins");                    
                 }              
             });

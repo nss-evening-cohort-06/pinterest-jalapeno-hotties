@@ -3,7 +3,7 @@
 app.controller("UserBoardCtrl", function ($location, $rootScope, $routeParams, $scope, PinService) {
     $scope.pin = {};
 
-    
+    $scope.isSuccess = null;
 
     const getBoardPins = (bid) => {
         PinService.getPinsByBoardId(bid).then((results) => {
@@ -16,7 +16,7 @@ app.controller("UserBoardCtrl", function ($location, $rootScope, $routeParams, $
     getBoardPins($routeParams.id);
 
     $scope.$on("updatePins", function(){
-        getPins();
+        getBoardPins($routeParams.id);
         $scope.isSuccess = true;
         PinService.alertTimeout(3); 
     });
