@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
+app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CONFIG) {
 
     const getAllPins = () => {
         let pins = [];
@@ -20,8 +20,26 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
     };
 
     const addNewPin = (pin) => {
-        return $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin));
+        return $q((resolve, reject) => {
+            $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`, JSON.stringify(pin)).then((result) => {
+                resolve(result);  
+            }).catch((err) => {
+                reject(err);  
+            });
+        });
     };
+
+    const alertTimeout = (timeoutInSeconds) => {
+        return $q((resolve, reject) => {
+            $timeout(() => {
+                $('.alert').alert('close');
+                resolve(); 
+            }, timeoutInSeconds * 1000);  
+        });    
+    };
+
+
+
 
     const getBoardByUid = (userUid) => {
       let userBoards = [];
@@ -88,5 +106,40 @@ app.service("PinService", function($http, $q, $rootScope, FIREBASE_CONFIG) {
     
   };
 
-    return {getAllPins, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard};
+
+  const getPinsByBoardId = (bid) => {
+    let pinBoards = []; 
+    let returnedPins = [];
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/pinBoard.json?orderBy="bid"&equalTo="${bid}"`).then((fbPinBoards) => {
+        Object.keys(fbPinBoards.data).forEach((key) => {
+          fbPinBoards.data[key].id = key;
+          pinBoards.push(fbPinBoards.data[key]);
+        });
+        return getAllPins();   
+      }).then((allPins) => {
+        allPins.forEach((pin) => {
+          pinBoards.forEach((pinBoard) => {
+            if (pin.id === pinBoard.pid) {
+              pin.pbid = pinBoard.id; 
+              returnedPins.push(pin); 
+            }
+          });
+        });
+        let uniqueReturnedPins = [...new Set(returnedPins)];
+        resolve(uniqueReturnedPins); 
+      }).catch((err) => {
+        console.log(err); 
+      });
+    });
+  };
+
+  const deletePinBoardRecord = (pinBoardId) => {
+    return $http.delete(`${FIREBASE_CONFIG.databaseURL}/pinBoard/${pinBoardId}.json`);
+  };
+
+
+
+    return {alertTimeout, getAllPins, getPinsByBoardId, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard, deletePinBoardRecord};
+ 
 });
