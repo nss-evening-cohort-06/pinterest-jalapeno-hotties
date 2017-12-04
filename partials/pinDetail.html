@@ -15,7 +15,7 @@
             </button>
                 
             <div class="dropdown-menu">
-                    <a class="dropdown-item" ng-repeat="board in boards" ng-click="addPinToBoard(pin.id, board.id)">{{board.name}}</a>
+                    <li class="dropdown-item" ng-repeat="board in boards" ng-click="addPinToBoard(pin.id, board.id)">{{board.name}}</li>
                 <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-center createNewBoardLink" ng-click="inputModeTrue()" >Create New Board</a>
             </div>

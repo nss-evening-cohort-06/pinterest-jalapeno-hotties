@@ -9,3 +9,6 @@ You will be broken into teams and your goals is to reverse engineer the basic fu
 3. Create board.
 4. Create pin to go on a board.
 5. Each member of your team should be responsible for at least 1 CRUD ticket and should see it through to the end.
+
+## Firebase Link
+https://pinterest-clone-e0b40.firebaseapp.com

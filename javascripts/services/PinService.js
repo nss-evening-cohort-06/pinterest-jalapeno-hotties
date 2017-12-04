@@ -38,7 +38,15 @@ app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CON
         });    
     };
 
-
+    const getBoardByBid = (bid) => {
+      return $q((resolve,reject) => {
+        $http.get(`${FIREBASE_CONFIG.databaseURL}/boards/${bid}.json`).then((board) => {
+            resolve(board.data);
+        }).catch((error) => {
+          console.log("error in gatBoardByUid in PinService", error);
+        });
+      });
+    };
 
 
     const getBoardByUid = (userUid) => {
@@ -140,6 +148,6 @@ app.service("PinService", function($http, $q, $rootScope, $timeout, FIREBASE_CON
 
 
 
-    return {alertTimeout, getAllPins, getPinsByBoardId, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard, deletePinBoardRecord};
+    return {alertTimeout, getAllPins, getPinsByBoardId, addNewPin, getCurrentUserBoards, getBoardByUid, addNewUserBoard, addNewBoard, addNewPinBoard, deletePinBoardRecord, getBoardByBid};
  
 });
